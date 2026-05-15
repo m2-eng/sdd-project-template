@@ -1,0 +1,15 @@
+# Entwicklungs- und Test-Abhängigkeiten
+# Installation: pip install -r requirements-dev.txt
+# Voraussetzung: aktivierte .venv (siehe setup.ps1)
+
+# Spezifikations-Werkzeug
+strictdoc
+
+# Test-Runner
+pytest
+
+# Code-Coverage
+pytest-cov
+
+# Test-Reports mit Traceability-Linking
+allure-pytest
