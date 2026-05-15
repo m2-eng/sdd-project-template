@@ -165,7 +165,7 @@ dokumentiert – der Normtext wird projektspezifisch eingepflegt.
 | SUP.10 – Change Request Mgmt | `PROJ-SYS-007` | GitHub Issues, `needs-statement`-Template, CR-Labels |
 | SWE.5/6 – Integration/Qualification | `PROJ-SYS-008` | Vorbereitet (Draft) – Aktivierung: `activate-test-levels`-Prompt |
 
-**Normtext einfügen**: In jeder Spec-Datei unter `spec/PROJ-SYS-00N-*.md` das
+**Normtext einfügen**: In `spec/aspice-compliance.md` das
 `**Statement**`-Feld mit dem lizenzierten ASPICE PAM-Text befüllen.
 
 **Vollständige Traceability-Matrix**: StrictDoc-Export via CD-Pipeline oder lokal:

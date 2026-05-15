@@ -43,7 +43,7 @@ Die Codes `TC-U`, `TC-I`, `TC-Q` sind bereits in `specification.instructions.md`
 
 ## Schritt 4 – PROJ-SYS-008 auf Active setzen
 
-In `spec/PROJ-SYS-008-aspice-swe5-swe6-testlevels.md`:
+In `spec/aspice-compliance.md`:
 - `**Status**: Draft` → `**Status**: Active`
 - Normtext aus lizenzierter ASPICE PAM einfügen (SWE.5 BP 1–6, SWE.6 BP 1–6)
 

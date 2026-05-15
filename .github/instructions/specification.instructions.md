@@ -135,6 +135,35 @@ Jede `.md`-Datei muss mit einem Zeilenumbruch enden.
 Die `# Überschrift` (H1) ist der Dokumenttitel. Sie muss die erste Zeile sein
 und darf nur einmal pro Datei vorkommen.
 
+### Regel 7: Content-Felder mit mehrzeiligem Wert (Rationale, Comment)
+
+Enthält `**Rationale**:` oder `**Comment**:` einen mehrzeiligen Wert (z. B. eine
+Aufzählung), **muss** der Inline-Wert nach dem `:` leer bleiben. Der Wert folgt
+nach einer Leerzeile.
+
+```markdown
+✅ Korrekt – Multiline-Modus (leerer Inline-Wert):
+
+**Rationale**:
+
+Der Grund ist:
+- Punkt 1
+- Punkt 2
+```
+
+```markdown
+❌ Falsch – Inline-Wert + Aufzählung erzeugt Duplicate-STATEMENT-Fehler:
+
+**Rationale**: Der Grund ist:
+- Punkt 1
+- Punkt 2
+```
+
+**Warum**: StrictDoc speichert den Inline-Text als vollständigen Feldwert.
+Die nachfolgende Aufzählung matcht kein `**Feld**:`-Muster und wird vom Parser
+als implizites `STATEMENT` behandelt – das ergibt ein Duplikat zum expliziten
+`**Statement**:`-Feld.
+
 ---
 
 ## 5. Relations (Parent-Verknüpfungen)
