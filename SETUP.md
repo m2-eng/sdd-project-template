@@ -46,6 +46,14 @@ Erstellt `.venv`, installiert alle Abhängigkeiten aus `requirements-dev.txt`.
 
 **Voraussetzung**: Python 3.10+, PowerShell
 
+> **Hinweis**: Für Schritt 4.2 (CR-Labels) wird zusätzlich die [GitHub CLI (`gh`)](https://cli.github.com/) benötigt:
+> ```powershell
+> winget install --id GitHub.cli   # Windows
+> # brew install gh                 # macOS
+> # sudo apt install gh             # Ubuntu/Debian
+> gh auth login                    # einmalig authentifizieren
+> ```
+
 ```powershell
 # Tests ausführen
 .venv\Scripts\python.exe -m pytest
@@ -79,14 +87,20 @@ git push origin baseline/v1.0-alpha.1
 
 ### 4.2 – CR-Labels anlegen (SUP.10)
 
-Unter **Settings → Labels** folgende Labels erstellen:
+Im geklonten Repository ausführen (einmalig, `gh` CLI muss authentifiziert sein):
 
-| Label | Farbe (Vorschlag) | Bedeutung |
-|-------|-------------------|-----------|
-| `cr-open` | `#e4e669` | Change Request eingegangen |
-| `cr-assessed` | `#0075ca` | Bewertet, Aufwand bekannt |
-| `cr-approved` | `#0e8a16` | Freigegeben zur Umsetzung |
-| `cr-implemented` | `#6f42c1` | Umgesetzt, Spec aktualisiert |
+```powershell
+.github\setup-labels.ps1
+```
+
+Das Script legt folgende Labels an:
+
+| Label | Bedeutung |
+|-------|-----------|
+| `cr-open` | Change Request eingegangen |
+| `cr-assessed` | Bewertet, Aufwand bekannt |
+| `cr-approved` | Freigegeben zur Umsetzung |
+| `cr-implemented` | Umgesetzt, Spec aktualisiert |
 
 ### 4.3 – GitHub Projects Board anlegen (optional, SUP.10)
 

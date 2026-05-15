@@ -75,3 +75,12 @@ Write-Host "  Venv aktivieren:  .venv\Scripts\Activate.ps1"
 Write-Host "  Tests ausfuehren: pytest tests\"
 Write-Host "  Spec-Server:      strictdoc server ."
 Write-Host ""
+
+# --- Optionaler Hinweis: GitHub CLI ---
+if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+    Write-Host "Hinweis: GitHub CLI (gh) nicht gefunden." -ForegroundColor Yellow
+    Write-Host "  Benoetigt fuer CR-Labels (.github\setup-labels.ps1)." -ForegroundColor Yellow
+    Write-Host "  Installation: winget install --id GitHub.cli" -ForegroundColor Yellow
+    Write-Host "  Danach einmalig: gh auth login" -ForegroundColor Yellow
+    Write-Host ""
+}

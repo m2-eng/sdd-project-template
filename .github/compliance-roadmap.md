@@ -79,11 +79,11 @@ Der SDD-Workflow deckt bereits ab:
 
 ### 5 – GitHub Issues als formale Change Requests (SUP.10)
 **Norm**: ASPICE SUP.10 (Change Request Management)
-**Was fehlt**: Formaler CR-Status-Lifecycle im Issue (Offen → Bewertet → Genehmigt → Umgesetzt)
-**Offene Schritte:**
-- GitHub Labels als CR-Status anlegen: `cr-open`, `cr-assessed`, `cr-approved`, `cr-implemented`
-- GitHub Projects Board mit Spalten pro Status konfigurieren
-**Aufwand**: S (Labels + Project Board konfigurieren)
+**Status**: ✅ Script im Template (`setup-labels.ps1`) – einmalig im konkreten Repo ausführen
+
+```powershell
+.github\setup-labels.ps1   # gh auth login Voraussetzung
+```
 
 ---
 
