@@ -11,7 +11,7 @@ Das Projekt fügt den Normtext aus der lizenzierten ASPICE PAM-Version hier ein.
 ### Baselines werden systematisch erstellt, freigegeben und als Artefakte veröffentlicht
 
 **UID**: PROJ-SYS-006 \
-**Status**: Draft
+**Status**: Active
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.8, BP 1–7]
 

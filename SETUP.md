@@ -146,3 +146,29 @@ git push origin baseline/v1.0
 ```
 
 → GitHub Actions erzeugt automatisch den Release mit allen Artefakten.
+
+---
+
+## 7 – ASPICE-Compliance-Übersicht
+
+Das Template deckt folgende ASPICE-Prozesse ab. Jeder Prozess ist als Spec-Node
+dokumentiert – der Normtext wird projektspezifisch eingepflegt.
+
+| ASPICE-Prozess | Spec-UID | Implementiert durch |
+|---------------|----------|---------------------|
+| SWE.1 – Software Requirements | `PROJ-SYS-001` | `spec/`, StrictDoc, UID-Traceability, `spec-mode` |
+| SWE.2 – Architectural Design | `PROJ-SYS-002` | `docs/architecture/`, ADR-Template, `plan-mode` |
+| SWE.4 – Unit Verification | `PROJ-SYS-003` | `pytest`, `conftest.py`, `pytest.ini`, `test-mode`, CD-Pipeline |
+| SUP.1 – Quality Assurance | `PROJ-SYS-004` | `docs/review/`, `review-mode`, Review Agent |
+| SUP.2 – Verification | `PROJ-SYS-005` | `scripts/validate_specs.py`, `.github/workflows/ci.yml` |
+| SUP.8 – Configuration Mgmt | `PROJ-SYS-006` | Git-Tags, `CHANGELOG.md`, `baseline-mode`, CD-Pipeline |
+| SUP.10 – Change Request Mgmt | `PROJ-SYS-007` | GitHub Issues, `needs-statement`-Template, CR-Labels |
+| SWE.5/6 – Integration/Qualification | `PROJ-SYS-008` | Vorbereitet (Draft) – Aktivierung: `activate-test-levels`-Prompt |
+
+**Normtext einfügen**: In jeder Spec-Datei unter `spec/PROJ-SYS-00N-*.md` das
+`**Statement**`-Feld mit dem lizenzierten ASPICE PAM-Text befüllen.
+
+**Vollständige Traceability-Matrix**: StrictDoc-Export via CD-Pipeline oder lokal:
+```powershell
+.venv\Scripts\strictdoc server .   # http://127.0.0.1:5111
+```

@@ -223,7 +223,10 @@ werden im Projekt einfach nicht verwendet.
 | `INT` | Integration / Middleware | Drittanbieter-Anbindungen, OS-Dienste, Kamera-API |
 | `SEC` | Security | Authentifizierung, Autorisierung, Datenschutz, Kryptographie |
 | `SAF` | Safety (Funktionale Sicherheit) | Failsafe-Verhalten, ASIL-Anforderungen, sicherheitskritische Abläufe |
-| `TC` | Testfälle | Reserviert für TC-Nodes (siehe Abschnitt 10) – kein fachliches Subsystem |
+| `TC` | Testfälle (allgemein) | Reserviert für TC-Nodes (siehe Abschnitt 10) – kein fachliches Subsystem |
+| `TC-U` | Unit-Testfälle (SWE.4) | Einzelfunktionen, kein I/O – aktivieren via `activate-test-levels.prompt.md` |
+| `TC-I` | Integrationstestfälle (SWE.5) | Modul-Zusammenspiel – aktivieren via `activate-test-levels.prompt.md` |
+| `TC-Q` | Qualifikationstestfälle (SWE.6) | End-to-End gegen reale Umgebung – aktivieren via `activate-test-levels.prompt.md` |
 
 **Nummernraum**: Jeder Code hat seinen eigenen Counter. `PROJ-BE-001` und
 `PROJ-SEC-001` sind zwei verschiedene Requirements.

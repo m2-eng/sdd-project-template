@@ -11,7 +11,7 @@ Das Projekt fügt den Normtext aus der lizenzierten ASPICE PAM-Version hier ein.
 ### Spec-Abdeckung wird automatisch verifiziert und Lücken werden sichtbar gemacht
 
 **UID**: PROJ-SYS-005 \
-**Status**: Draft
+**Status**: Active
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.2, BP 1–5]
 

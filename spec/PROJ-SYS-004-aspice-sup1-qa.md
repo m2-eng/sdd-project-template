@@ -11,7 +11,7 @@ Das Projekt fügt den Normtext aus der lizenzierten ASPICE PAM-Version hier ein.
 ### Qualitätssicherung wird systematisch durchgeführt und dokumentiert
 
 **UID**: PROJ-SYS-004 \
-**Status**: Draft
+**Status**: Active
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.1, BP 1–6]
 

@@ -92,7 +92,7 @@ def load_spec_uids(root: Path, include_draft: bool) -> dict[str, str]:
 # @spec-Annotationen aus Quellcode einlesen
 # ---------------------------------------------------------------------------
 
-SPEC_ANNOTATION_PATTERN = re.compile(r"@spec:\s*([A-Z]+-[A-Z]+-\d+)")
+SPEC_ANNOTATION_PATTERN = re.compile(r"@spec:\s*([A-Z]+-[A-Z]+-\d+|[A-Z]+-[A-Z]+-[A-Z]+-\d+)")
 
 # Beispiel-UIDs in Dokumentations- und Instruction-Dateien, die keine echten Spec-Nodes sind.
 # Diese UIDs werden in Warnungen ignoriert (Template-Platzhalter).

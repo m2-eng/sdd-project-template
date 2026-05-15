@@ -11,7 +11,7 @@ Das Projekt fügt den Normtext aus der lizenzierten ASPICE PAM-Version hier ein.
 ### Software-Units werden systematisch verifiziert und Ergebnisse nachvollziehbar dokumentiert
 
 **UID**: PROJ-SYS-003 \
-**Status**: Draft
+**Status**: Active
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SWE.4, BP 1–6]
 
