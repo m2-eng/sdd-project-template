@@ -1,7 +1,7 @@
 ﻿# Projektkonfiguration
 
-**Nur diese Datei** muss beim Start eines neuen Projekts angepasst werden.
-Setup, Ordnerstruktur und Workflow-Referenz: `.github/instructions/sdd.setup.md`.
+**Diese Datei** ist die primäre Konfiguration. Zusätzlich muss `strictdoc_config.py` (Feld `project_title`) angepasst werden.
+Setup, Ordnerstruktur und Workflow-Referenz: `SETUP.md`.
 
 ---
 
@@ -22,7 +22,7 @@ Code-Definitionen: `specification.instructions.md`, Abschnitt 7.
 
 | Code | Nächste freie ID |
 |------|-----------------|
-| `SYS` | `PROJ-SYS-009` |
+| `SYS` | `PROJ-SYS-010` |
 | `UI` | `PROJ-UI-001` |
 | `BE` | `PROJ-BE-001` |
 | `API` | `PROJ-API-001` |

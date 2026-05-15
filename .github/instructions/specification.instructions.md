@@ -60,6 +60,18 @@ Anwendungsfall möglich.
 benötigt wird, Then fordert die App diese Berechtigung vom Betriebssystem an.
 ```
 
+### 2.3 – Annotationsformat (kanonisch)
+
+Jede öffentliche Funktion in `src/` und jede Testfunktion in `tests/` trägt eine Traceability-Annotation:
+
+```
+# @spec: PROJ-[CODE]-NNN        ← Produktionscode (src/)
+# @spec: PROJ-TC-NNN            ← Testfunktionen (tests/)
+```
+
+Diese Datei ist die **einzige kanonische Quelle** für das Annotationsformat.
+Alle anderen Instruction-Dateien (workflow, impl, test, copilot-instructions) verweisen hierher.
+
 ---
 
 ## 3. Felder und ihre Regeln

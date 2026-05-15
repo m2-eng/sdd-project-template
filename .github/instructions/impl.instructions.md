@@ -21,6 +21,8 @@ export function processData(input: Uint8Array): ProcessedResult {
 }
 ```
 
+> Kanonische Definition: `specification.instructions.md` Abschnitt 2.3
+
 Interne Hilfsfunktionen ohne eigene AC können auf den übergeordneten Node verweisen.
 
 ## Minimalismus

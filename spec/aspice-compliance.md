@@ -11,7 +11,7 @@ Das Projekt fügt den Normtext aus der lizenzierten ASPICE PAM-Version projektsp
 ### Software-Anforderungen werden systematisch erfasst und rückverfolgt
 
 **UID**: PROJ-SYS-001 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SWE.1, BP 1–8]
 
@@ -23,13 +23,14 @@ Der SDD-Workflow erfüllt SWE.1 durch:
 - `@spec`-Annotationen in `src/` und `tests/` für bidirektionale Traceability
 - GitHub Issues mit `needs-statement`-Template als formaler Eingangskanal
 - Workflow-Phasen `spec-mode` und `plan-mode` strukturieren Erfassung und Ableitung
+- `specification.instructions.md` Abschnitt 2 definiert das kanonische `@spec:`-Annotationsformat; alle anderen Instruction-Dateien verweisen nur darauf
 
 ## SWE.2 – Software Architectural Design
 
 ### Software-Architektur wird dokumentiert und mit Anforderungen verknüpft
 
 **UID**: PROJ-SYS-002 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SWE.2, BP 1–7]
 
@@ -42,12 +43,33 @@ Der SDD-Workflow erfüllt SWE.2 durch:
 - Plan Agent mit Edit-Zugriff auf `docs/architecture/` für direkte ADR-Erstellung
 - `spec: PROJ-[CODE]-NNN`-Relations verknüpfen Architektur-Entscheidungen mit Requirements
 
+## SWE.3 – Software Detailed Design and Unit Construction
+
+### Software-Detaildesign wird erstellt, dokumentiert und mit der Architektur verknüpft
+
+**UID**: PROJ-SYS-009 \
+**Status**: Draft
+
+**Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SWE.3, BP 1–7]
+
+**Rationale**:
+
+Der SDD-Workflow adressiert SWE.3 teilweise durch:
+- `plan-mode` (Phase 2): Technischer Plan identifiziert betroffene Module, Dateien und Funktionsschnittstellen
+- `docs/architecture/` mit `ADR-000-template.md`: Ablageort für entwurfsbezogene Entscheidungen auf Unit-Ebene
+- Spec-Nodes mit `**Relations**:`-Verknüpfungen: bidirektionale Traceability von Detaildesign-Entscheidungen zu Systemanforderungen
+
+Vollständige SWE.3-Abdeckung erfordert zusätzlich (für Projekte mit ASPICE Level 3+ Anforderungen):
+- Erweiterung `plan-mode` um expliziten Schritt für Unit Interface-Beschreibungen (SWE.3 BP 2)
+- Subsystem-Code `DD` (Detailed Design) in `specification.instructions.md` Abschnitt 7 für Interface-Spec-Nodes
+- Formaler Verifikationsschritt in `review-mode`: Detaildesign gegen Architektur prüfen (SWE.3 BP 3)
+
 ## SWE.4 – Software Unit Verification
 
 ### Software-Units werden systematisch verifiziert und Ergebnisse nachvollziehbar dokumentiert
 
 **UID**: PROJ-SYS-003 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SWE.4, BP 1–6]
 
@@ -66,7 +88,7 @@ Der SDD-Workflow erfüllt SWE.4 durch:
 ### Qualitätssicherung wird systematisch durchgeführt und dokumentiert
 
 **UID**: PROJ-SYS-004 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.1, BP 1–6]
 
@@ -84,7 +106,7 @@ Der SDD-Workflow erfüllt SUP.1 durch:
 ### Spec-Abdeckung wird automatisch verifiziert und Lücken werden sichtbar gemacht
 
 **UID**: PROJ-SYS-005 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.2, BP 1–5]
 
@@ -103,7 +125,7 @@ Der SDD-Workflow erfüllt SUP.2 durch:
 ### Baselines werden systematisch erstellt, freigegeben und als Artefakte veröffentlicht
 
 **UID**: PROJ-SYS-006 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.8, BP 1–7]
 
@@ -122,7 +144,7 @@ Der SDD-Workflow erfüllt SUP.8 durch:
 ### Änderungsanforderungen werden formal erfasst, bewertet, freigegeben und rückverfolgt
 
 **UID**: PROJ-SYS-007 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.10, BP 1–5]
 
@@ -157,3 +179,4 @@ Der SDD-Workflow bereitet SWE.5/6 durch folgende Infrastruktur vor:
 - Aktivierung: `activate-test-levels.prompt.md` konfiguriert pytest.ini und CHANGELOG
 
 Vollständige Aktivierung erfordert: pytest.ini-Erweiterung + separate Allure-Reporte + neue TC-Nodes.
+- Pytest-Marker-Texte enthalten ASPICE-Prozessreferenzen als Konvention; für Projekte mit anderem Prozessrahmen (ISO 26262, DO-178C, ISO 9001) sind Marker-Texte in `pytest.ini` und `conftest.py` projektspezifisch ohne Norm-Verweis zu formulieren

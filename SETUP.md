@@ -20,7 +20,7 @@ Dieses Template erstellt ein vollständiges SDD-Projekt mit ASPICE-konformem Wor
 
 ### `.github/project.config.md`
 
-Die **einzige Datei**, die pro Projekt angepasst werden muss:
+Die **primäre Konfigurationsdatei**, die pro Projekt angepasst werden muss (zusätzlich `strictdoc_config.py`, Feld `project_title`):
 
 | Feld | Beispiel | Beschreibung |
 |------|----------|--------------|

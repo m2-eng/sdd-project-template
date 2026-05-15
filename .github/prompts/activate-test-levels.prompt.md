@@ -73,3 +73,15 @@ Then wird das erwartete Ergebnis zurückgegeben.
 ```
 
 Test-Datei: `tests/unit/test_PROJ_TC_U_001.py`
+
+## Hinweis: Prozessrahmen-Anpassung
+
+Die Marker-Texte `(ASPICE SWE.4)`, `(ASPICE SWE.5)`, `(ASPICE SWE.6)` sind Konvention für ASPICE-Projekte.
+Bei anderem Prozessrahmen (z.B. ISO 26262, DO-178C): Marker-Texte in `pytest.ini` und `conftest.py` ohne Norm-Verweis formulieren:
+
+```ini
+# Generisch (prozessrahmen-unabhängig):
+unit: Unit-Test
+integration: Integrationstest
+qualification: Qualifikationstest / System Test
+```

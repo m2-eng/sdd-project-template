@@ -190,10 +190,10 @@ def main() -> None:
         description="Prueft @spec-Traceability zwischen spec/ und Quellcode."
     )
     parser.add_argument(
-        "--include-draft",
+        "--exclude-draft",
         action="store_true",
-        default=True,
-        help="Draft-Nodes ebenfalls pruefen (Standard: an)",
+        default=False,
+        help="Draft-Nodes von der Pruefung ausschliessen (Standard: Draft wird geprueft)",
     )
     parser.add_argument(
         "--root",
@@ -203,7 +203,7 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    exit_code = validate(root, include_draft=args.include_draft)
+    exit_code = validate(root, include_draft=not args.exclude_draft)
     sys.exit(exit_code)
 
 

@@ -178,6 +178,8 @@ Spec-Referenzen im Code folgen immer diesem Format:
 @spec: PROJ-TC-NNN            ← Testfunktion (verlinkt TC-Node)
 ```
 
+> Kanonische Definition: `specification.instructions.md` Abschnitt 2.3
+
 UID-Konvention und Subsystem-Codes: `specification.instructions.md`, Abschnitt 7.
 ## Hinweis zur Vorlage
 

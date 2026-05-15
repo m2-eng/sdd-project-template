@@ -58,6 +58,8 @@ def test_PROJ_TC_001_function_returns_expected_result():
     ...
 ```
 
+> Kanonische Definition: `specification.instructions.md` Abschnitt 2.3
+
 Der `pytest.mark.spec`-Marker muss in `conftest.py` registriert werden:
 
 ```python

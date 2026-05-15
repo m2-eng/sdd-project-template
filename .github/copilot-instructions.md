@@ -9,6 +9,8 @@ Generiere niemals Code ohne eine gültige Spec-ID. Fehlt eine passende Spezifika
 ### Traceability
 Jede generierte Funktion trägt einen Verweis auf ihre Spec-ID als Kommentar: `@spec: PROJ-[CODE]-NNN`.
 
+> Kanonische Definition: `specification.instructions.md` Abschnitt 2.3
+
 ### Spec-first bei Unklarheit
 Ist eine Spec unvollständig oder widersprüchlich: zuerst klären, nicht improvisieren.
 
