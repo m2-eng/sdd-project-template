@@ -1,4 +1,7 @@
-﻿## SDD – Kernregeln
+﻿<!-- @spec: PROJ-SYS-001 -->
+<!-- @spec: PROJ-SYS-007 -->
+
+## SDD – Kernregeln
 
 ### Spec-Gate
 Generiere niemals Code ohne eine gültige Spec-ID. Fehlt eine passende Spezifikation: stoppe und weise explizit darauf hin.

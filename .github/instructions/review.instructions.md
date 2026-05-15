@@ -1,6 +1,7 @@
 ---
 applyTo: "**"
 ---
+<!-- @spec: PROJ-SYS-004 -->
 
 # Review-Richtlinien (review-mode)
 

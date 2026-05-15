@@ -1,4 +1,5 @@
 # CR-Labels für SUP.10 anlegen
+# @spec: PROJ-SYS-007
 # Voraussetzung: GitHub CLI installiert (winget install --id GitHub.cli)
 #                gh auth login abgeschlossen
 # Ausführen im Repository-Verzeichnis: .\.github\setup-labels.ps1

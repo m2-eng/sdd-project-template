@@ -1,6 +1,7 @@
 ﻿---
 applyTo: "spec/**"
 ---
+<!-- @spec: PROJ-SYS-001 -->
 
 # Spezifikations-Richtlinien (StrictDoc Markdown)
 

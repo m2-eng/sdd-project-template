@@ -1,3 +1,5 @@
+# @spec: PROJ-SYS-003
+# @spec: PROJ-SYS-006
 name: Release Pipeline
 
 on:

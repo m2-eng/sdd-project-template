@@ -1,6 +1,7 @@
 ---
 applyTo: "spec/**"
 ---
+<!-- @spec: PROJ-SYS-002 -->
 
 # Plan-Richtlinien (plan-mode)
 

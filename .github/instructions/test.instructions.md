@@ -1,6 +1,7 @@
 ---
 applyTo: "tests/**"
 ---
+<!-- @spec: PROJ-SYS-003 -->
 
 # Test-Richtlinien (test-mode)
 

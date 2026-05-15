@@ -22,7 +22,7 @@ Code-Definitionen: `specification.instructions.md`, Abschnitt 7.
 
 | Code | Nächste freie ID |
 |------|-----------------|
-| `SYS` | `PROJ-SYS-001` |
+| `SYS` | `PROJ-SYS-008` |
 | `UI` | `PROJ-UI-001` |
 | `BE` | `PROJ-BE-001` |
 | `API` | `PROJ-API-001` |
