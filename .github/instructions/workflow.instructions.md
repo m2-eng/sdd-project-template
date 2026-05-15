@@ -127,6 +127,41 @@ oder User beschreibt ein Feature / eine Anforderung direkt im Chat.
 
 ---
 
+### Phase 7 – baseline-mode: Baseline erstellen
+
+**Trigger**: Review-Zyklus vollständig abgeschlossen – keine offenen Abweichungen.
+Oder: Refactor-Zyklus abgeschlossen und anschließendes Review ohne Befunde.
+
+**Ziel (ASPICE SUP.8)**: Freigegebenen Projekt-Stand fixieren.
+Git-Tag = unveränderlicher Baseline-Identifier. Änderungen, Traceability und
+Prozesshistorie sind über Git-History + Spec nachvollziehbar.
+Artifakte (Test-Report, StrictDoc-Export) werden bei Auslieferung automatisch
+von der CD-Pipeline am GitHub Release angehängt.
+
+**Baseline-Checkliste (vor Freigabe vollständig prüfen):**
+
+| Punkt | Bedingung |
+|-------|-----------|
+| Spec-Status | Alle im Scope befindlichen Nodes haben `**Status**: Active` |
+| Tests | Alle Tests grün |
+| Review | Review-Dokument in `docs/review/` vorhanden, alle Abweichungen geschlossen |
+| Traceability | Alle Funktionen in `src/` und Tests in `tests/` tragen `@spec:`-Annotation |
+
+**Baseline-Naming:**
+- Format: `vMAJOR.MINOR` (z.B. `v1.0`, `v1.1`) – Pre-Release: `vMAJOR.MINOR-alpha.N` / `vMAJOR.MINOR-beta.N`
+- **Major** erhöhen: neue oder geänderte Spec (Scope-Änderung, neues AC)
+- **Minor** erhöhen: Korrekturen in Code/Tests ohne Spec-Änderung
+
+**Meine Aufgaben:**
+1. Baseline-Checkliste prüfen – bei nicht erfülltem Punkt: blockieren und Grund benennen
+2. `CHANGELOG.md`-Eintrag vorbereiten (alle enthaltenen Spec-IDs auflisten)
+3. Git-Befehle für Commit + Tag ausgeben: `git commit -m "Baseline vX.Y"` + `git tag baseline/vX.Y`
+4. Nach User-Bestätigung: Baseline als abgeschlossen melden – CD-Pipeline übernimmt Artifact-Erzeugung
+
+**Stopp-Bedingung**: Offene Abweichungen im letzten Review oder Tests nicht grün → baseline-mode nicht zulässig.
+
+---
+
 ## Spec-Gate (immer aktiv, in allen Modi)
 
 Werde ich gebeten, Code ohne Spec-ID zu schreiben, antworte ich immer:

@@ -14,6 +14,7 @@ src/                     → Produktionscode
 tests/                   → Tests
 docs/
   review/                → Review-Dokumente (YYYY-MM-DD_[Spec-ID]_review.md)
+CHANGELOG.md             → Versionshistorie mit Spec-ID-Referenzen (baseline-mode)
 .github/
   agents/
     spec-agent.agent.md    → Phase 1: Spec erstellen / einpflegen
@@ -48,8 +49,11 @@ strictdoc_config.py                → StrictDoc-Projektkonfiguration
 | `src/`         | –          | R          | R          | R/W        | R            | –              |
 | `tests/`       | –          | R          | R/W        | R          | R            | –              |
 | `docs/review/` | –          | –          | –          | –          | R/W          | –              |
+| `CHANGELOG.md` | –          | –          | –          | –          | R/W          | –              |
 
 \* refactor-agent schlägt vor, spec-agent führt aus
+
+**baseline-mode** (Phase 7) wird vom review-agent nach erfolgreichem Review ausgeführt.
 
 ---
 

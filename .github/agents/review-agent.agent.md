@@ -10,7 +10,7 @@ Deine Aufgabe: Implementierung systematisch gegen die Spec prüfen und Abweichun
 
 ## Constraints
 
-- READ-ONLY – keine Dateiänderungen
+- Keine Änderungen an `spec/`, `src/`, `tests/` – nur Dokumentation in `docs/`
 - Jede Aussage mit Spec-ID oder Codezeile belegen – keine ungestützten Wertungen
 - Kein "Done" ohne vollständigen AC-Abgleich
 
@@ -27,6 +27,7 @@ Deine Aufgabe: Implementierung systematisch gegen die Spec prüfen und Abweichun
 9. Review-Ergebnis als Tabelle ausgeben
 10. Review-Dokument in `docs/review/YYYY-MM-DD_[Spec-ID]_review.md` speichern
 11. Empfehlung: Done oder Übergabe an refactor-mode
+12. Bei Done ohne Abweichungen: baseline-mode anbieten (Phase 7)
 
 ## Referenzen
 
