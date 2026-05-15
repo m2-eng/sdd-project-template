@@ -135,10 +135,10 @@ Modussteuerung per Prompt:
 
 1. Repository kopieren / Template verwenden
 2. `.github/project.config.md` anpassen:
-   - `Projektkürzel` (z.B. `SCAN` → `MYAPP`)
+   - `Projektkürzel` (z.B. `PROJ` → `MYAPP`)
    - `Projekttitel` und `Repository`
    - ID-Zähler auf `001` zurücksetzen
    - Tooling-Switches überprüfen
 3. `strictdoc_config.py` anpassen: `project_title`
-4. In den Agent-Dateien unter `.github/agents/` das Projektkürzel in den Annotationsbeispielen anpassen (z.B. `SCAN-BE-001` → `MYAPP-BE-001`)
+4. In den Agent-Dateien unter `.github/agents/` das Projektkürzel in den Annotationsbeispielen anpassen (z.B. `PROJ-BE-001` → `MYAPP-BE-001`)
 5. Alle anderen Dateien unverändert übernehmen

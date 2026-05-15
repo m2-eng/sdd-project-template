@@ -14,32 +14,22 @@ Der SDD-Workflow deckt bereits ab:
 - ✅ SUP.10 (Change Request): Needs Statement Issue → formale Spec-Nodes
 - ✅ Traceability: `@spec`-Annotationen in Code und Tests
 - ✅ SUP.10 (Needs Statement): Issue-Template `needs-statement.md` erstellt
-- ✅ SWE.4 (Test Results – lokal): `conftest.py` + `pytest.ini` im Template – Report-Veröffentlichung → #3 CD-Pipeline
+- ✅ SWE.4 (Test Results – lokal): `conftest.py` + `pytest.ini` im Template – Report-Veröffentlichung → #2 CD-Pipeline
+- ✅ SWE.2 (Architecture): `docs/architecture/` + ADR-Vorlage + plan-agent mit Edit-Zugriff
 
 ---
 
 ## Offene Punkte
 
-### 1 – Architecture Decision Records (SWE.2)
-**Norm**: ASPICE SWE.2 (Software Architecture) / DO-178C Section 11.10
-**Was fehlt**: Architekturentscheidungen sind aktuell nur in Plan-Chats – nicht persistent
-**Vorschlag**:
-- `docs/architecture/ADR-NNN-titel.md` (Architecture Decision Records)
-- plan-agent erhält `edit`-Zugriff auf `docs/architecture/`
-- Lightweight ADR-Format: Kontext | Entscheidung | Konsequenzen
-**Aufwand**: M (ADR-Format definieren, plan-agent erweitern)
-
----
-
-### 2 – CD-Pipeline / Release-Automatisierung (SWE.4 / SWE.1 / SUP.8)
+### 1 – CD-Pipeline / Release-Automatisierung (SWE.4 / SWE.1 / SUP.8)
 **Norm**: ASPICE SWE.4 (Test Results), SWE.1 (Traceability), SUP.8 (Baseline Artifacts)
-**Status**: Konzept definiert – Implementierung ausstehend (eigene Spec empfohlen)
+**Status**: ✅ Workflow-YAML im Template (`release.yml`) – aktiv sobald in konkretem Projekt-Repo deployed
 
 **Trigger**: `git tag baseline/vX.Y` + Push auf GitHub
 
 **Was die Pipeline tut:**
-1. Tests ausführen (`pytest --cov=src`)
-2. Allure-Report generieren
+1. Tests ausführen (`pytest` liest Konfiguration aus `pytest.ini`)
+2. Allure-Report generieren (via `allure-commandline` npm)
 3. StrictDoc-Export generieren (Traceability-Matrix)
 4. GitHub Release mit allen Artefakten veröffentlichen
 5. Pre-Release-Flag automatisch aus Tag-Suffix ableiten (`-alpha.N` / `-beta.N` → Pre-Release, sonst Release)
@@ -49,11 +39,11 @@ Der SDD-Workflow deckt bereits ab:
 - Traceability-Matrix-Snapshot für SWE.1/SUP.1
 - Baseline-Artefakte für SUP.8
 
-**Aufwand**: M (eigene Spec empfohlen, da drei verknüpfte Schritte koordiniert werden müssen)
+**Verbleibende Aufgabe (pro Projekt):** `release.yml` aus Template in konkretes Repo übernehmen – keine weiteren Anpassungen nötig.
 
 ---
 
-### 3 – CI Spec-Validator (SUP.2 – Verification)
+### 2 – CI Spec-Validator (SUP.2 – Verification)
 **Norm**: ASPICE SUP.2 (Software Verification)
 **Was fehlt**: Automatische Prüfung ob alle Spec-Nodes gültig sind (UID vorhanden, Status gesetzt)
 **Vorschlag**:
@@ -63,7 +53,7 @@ Der SDD-Workflow deckt bereits ab:
 
 ---
 
-### 4 – Konfigurationsmanagement (SUP.8)
+### 3 – Konfigurationsmanagement (SUP.8)
 **Norm**: ASPICE SUP.8 (Configuration Management)
 **Status**: Prozess definiert (`workflow.instructions.md` Phase 7, `CHANGELOG.md`) – CI-Automatisierung ausstehend
 
@@ -72,11 +62,11 @@ Der SDD-Workflow deckt bereits ab:
 - Versionshistorie: `CHANGELOG.md` mit Spec-ID-Referenzen pro Eintrag
 - Baseline-Naming: `vMAJOR.MINOR` | Pre-Release: `vMAJOR.MINOR-alpha.N` / `vMAJOR.MINOR-beta.N`
 - Git-Tag bei Freigabe: `baseline/vX.Y` – Git-History ist Audit-Trail
-- Deliverable-Artefakte → **#2 CD-Pipeline**
+- Deliverable-Artefakte → **#1 CD-Pipeline**
 
 ---
 
-### 5 – Integrations- und Qualifikationstests (SWE.5 / SWE.6)
+### 4 – Integrations- und Qualifikationstests (SWE.5 / SWE.6)
 **Norm**: ASPICE SWE.5 (Integration) / SWE.6 (Qualification)
 **Was fehlt**: Separate Testebenen für Integration und System-Qualifikation
 **Vorschlag**:
@@ -87,7 +77,7 @@ Der SDD-Workflow deckt bereits ab:
 
 ---
 
-### 6 – GitHub Issues als formale Change Requests (SUP.10)
+### 5 – GitHub Issues als formale Change Requests (SUP.10)
 **Norm**: ASPICE SUP.10 (Change Request Management)
 **Was fehlt**: Formaler CR-Status-Lifecycle im Issue (Offen → Bewertet → Genehmigt → Umgesetzt)
 **Offene Schritte:**
@@ -99,6 +89,6 @@ Der SDD-Workflow deckt bereits ab:
 
 ## Empfohlene Reihenfolge
 
-1. **Sofort (S)**: CR-Labels (#6)
-2. **Nächste Iteration (M)**: CD-Pipeline (#2) + ADR (#1) + CI-Validator (#3)
-3. **Später (L)**: Testebenen (#5)
+1. **Sofort (S)**: CR-Labels (#5)
+2. **Nächste Iteration (M)**: CD-Pipeline (#1) + CI-Validator (#2)
+3. **Später (L)**: Testebenen (#4)

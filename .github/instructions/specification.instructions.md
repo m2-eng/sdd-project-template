@@ -14,7 +14,7 @@ und maschinenauswertbare Spezifikation.
 ## 1. Dateistruktur
 
 ```
-spec/SCAN-[CODE]-NNN-kurzer-titel.md
+spec/PROJ-[CODE]-NNN-kurzer-titel.md
 ```
 
 Jede Spec-Datei folgt diesem Aufbau:
@@ -33,30 +33,30 @@ Jede Spec-Datei folgt diesem Aufbau:
 ### 2.1 Vollständiges Beispiel
 
 ```markdown
-### Barcode wird beim Scan-Start erkannt
+### Eingabe wird beim Aufruf verarbeitet
 
-**UID**: SCAN-BE-001 \
+**UID**: PROJ-BE-001 \
 **Status**: Draft \
-**Relations**: SCAN-SYS-001
+**Relations**: PROJ-SYS-001
 
-**Statement**: Given die Kamera ist aktiv und ein Barcode ist im Bild sichtbar,
-When der Scan-Prozess gestartet wird, Then gibt die App den dekodierten Wert
-innerhalb von 500 ms zurück.
+**Statement**: Given das System bereit ist und eine gültige Eingabe vorliegt,
+When der Verarbeitungsprozess gestartet wird, Then liefert die Funktion das
+erwartete Ergebnis innerhalb von 500 ms zurück.
 
-**Rationale**: Kernfunktion der App – ohne diesen Schritt ist kein weiterer
+**Rationale**: Kernfunktion des Systems – ohne diesen Schritt ist kein weiterer
 Anwendungsfall möglich.
 ```
 
 ### 2.2 Minimales Beispiel (ohne Relations, ohne Rationale)
 
 ```markdown
-### Kamera-Berechtigung wird angefordert
+### Berechtigung wird beim Start angefordert
 
-**UID**: SCAN-UI-001 \
+**UID**: PROJ-UI-001 \
 **Status**: Draft
 
-**Statement**: Given die App wird erstmalig geöffnet, When Kamera-Zugriff
-benötigt wird, Then fordert die App die Berechtigung vom Betriebssystem an.
+**Statement**: Given die App wird erstmalig geöffnet, When eine Systemberechtigung
+benötigt wird, Then fordert die App diese Berechtigung vom Betriebssystem an.
 ```
 
 ---
@@ -65,7 +65,7 @@ benötigt wird, Then fordert die App die Berechtigung vom Betriebssystem an.
 
 | Feld | Pflicht | Wert | Hinweis |
 |------|---------|------|---------|
-| **UID** | Ja | `SCAN-[CODE]-NNN` | Eindeutig über alle Dateien hinweg; CODE aus Subsystem-Tabelle (Abschnitt 7) |
+| **UID** | Ja | `PROJ-[CODE]-NNN` | Eindeutig über alle Dateien hinweg; CODE aus Subsystem-Tabelle (Abschnitt 7) |
 | **Status** | Empfohlen | `Draft`, `Active`, `Outdated` | Gültige Werte – Details in Abschnitt 8 |
 | **Relations** | Optional | UID des Parent-Requirements | Nur einfache Parent-Relations (siehe Abschnitt 5) |
 | **Statement** | Ja | Given/When/Then-Text | Inhalt des Requirements |
@@ -86,9 +86,9 @@ mit ` \` (Leerzeichen + Backslash). Das letzte Meta-Feld hat kein `\`.
 ```markdown
 ### Beispiel mit allen Meta-Feldern
 
-**UID**: SCAN-BE-001 \        ← nicht letztes Meta-Feld → \
+**UID**: PROJ-BE-001 \        ← nicht letztes Meta-Feld → \
 **Status**: Draft \        ← nicht letztes Meta-Feld → \
-**Relations**: SCAN-SYS-001    ← letztes Meta-Feld → kein \
+**Relations**: PROJ-SYS-001    ← letztes Meta-Feld → kein \
 
 **Statement**: ...
 ```
@@ -96,7 +96,7 @@ mit ` \` (Leerzeichen + Backslash). Das letzte Meta-Feld hat kein `\`.
 ```markdown
 ### Beispiel ohne Relations
 
-**UID**: SCAN-BE-001 \        ← nicht letztes Meta-Feld → \
+**UID**: PROJ-BE-001 \        ← nicht letztes Meta-Feld → \
 **Status**: Draft          ← letztes Meta-Feld → kein \
 
 **Statement**: ...
@@ -105,7 +105,7 @@ mit ` \` (Leerzeichen + Backslash). Das letzte Meta-Feld hat kein `\`.
 ```markdown
 ### Beispiel mit nur UID
 
-**UID**: SCAN-BE-001          ← einziges / letztes Meta-Feld → kein \
+**UID**: PROJ-BE-001          ← einziges / letztes Meta-Feld → kein \
 
 **Statement**: ...
 ```
@@ -139,10 +139,10 @@ und darf nur einmal pro Datei vorkommen.
 ## 5. Relations (Parent-Verknüpfungen)
 
 ```markdown
-**Relations**: SCAN-SYS-001
+**Relations**: PROJ-SYS-001
 ```
 
-- Verbindet dieses Requirement als **Kind** mit dem Parent `SCAN-SYS-001`
+- Verbindet dieses Requirement als **Kind** mit dem Parent `PROJ-SYS-001`
 - Beide Nodes müssen eine `**UID**:` haben, sonst ignoriert StrictDoc den Link
 - Keine Kreisverweise (A → B → A) – führt zu Validierungsfehler
 - **Relation Roles** (`Refines`, `Verifies`, etc.) sind im MD-Modus noch nicht
@@ -156,7 +156,7 @@ und darf nur einmal pro Datei vorkommen.
 ## 6. Vollständiges Spec-Template
 
 ```markdown
-# [SCAN-[CODE]-NNN] Feature-Titel
+# [PROJ-[CODE]-NNN] Feature-Titel
 
 ## Kontext
 
@@ -172,7 +172,7 @@ und darf nur einmal pro Datei vorkommen.
 
 ### [Kurztitel des ersten Akzeptanzkriteriums]
 
-**UID**: SCAN-[CODE]-NNN \
+**UID**: PROJ-[CODE]-NNN \
 **Status**: Draft
 
 **Statement**: Given [Vorbedingung], When [Aktion], Then [Erwartetes Ergebnis]
@@ -181,15 +181,15 @@ und darf nur einmal pro Datei vorkommen.
 
 ### [Kurztitel des zweiten Akzeptanzkriteriums]
 
-**UID**: SCAN-[CODE]-NNN \
+**UID**: PROJ-[CODE]-NNN \
 **Status**: Draft \
-**Relations**: SCAN-[CODE]-NNN
+**Relations**: PROJ-[CODE]-NNN
 
 **Statement**: Given [Vorbedingung], When [Aktion], Then [Erwartetes Ergebnis]
 
 ## Abhängigkeiten
 
-[Hängt ab von SCAN-[CODE]-NNN: Begründung. Oder: Keine.]
+[Hängt ab von PROJ-[CODE]-NNN: Begründung. Oder: Keine.]
 
 ## Offene Fragen
 
@@ -202,8 +202,8 @@ und darf nur einmal pro Datei vorkommen.
 
 | Element | Konvention | Beispiel |
 |---------|-----------|---------|
-| Dateiname | `SCAN-[CODE]-NNN-kurzer-titel.md` | `SCAN-BE-001-barcode-decode.md` |
-| UID | `SCAN-[CODE]-NNN` | `SCAN-BE-001`, `SCAN-SEC-042` |
+| Dateiname | `PROJ-[CODE]-NNN-kurzer-titel.md` | `PROJ-BE-001-feature-title.md` |
+| UID | `PROJ-[CODE]-NNN` | `PROJ-BE-001`, `PROJ-SEC-042` |
 | Nächste freie ID | Aus `project.config.md` ablesen (pro Code) | |
 | H3-Titel | Kurz, beschreibend, kein Nummerierungspräfix | StrictDoc nummeriert selbst |
 
@@ -224,8 +224,8 @@ werden im Projekt einfach nicht verwendet.
 | `SAF` | Safety (Funktionale Sicherheit) | Failsafe-Verhalten, ASIL-Anforderungen, sicherheitskritische Abläufe |
 | `TC` | Testfälle | Reserviert für TC-Nodes (siehe Abschnitt 10) – kein fachliches Subsystem |
 
-**Nummernraum**: Jeder Code hat seinen eigenen Counter. `SCAN-BE-001` und
-`SCAN-SEC-001` sind zwei verschiedene Requirements.
+**Nummernraum**: Jeder Code hat seinen eigenen Counter. `PROJ-BE-001` und
+`PROJ-SEC-001` sind zwei verschiedene Requirements.
 
 ---
 
@@ -247,7 +247,7 @@ gesondert ausgewertet.
 
 Von `Draft` zu `Active`, wenn:
 
-- UID im Format `SCAN-[CODE]-NNN`, eindeutig über alle Dateien
+- UID im Format `PROJ-[CODE]-NNN`, eindeutig über alle Dateien
 - Alle Statements messbar formuliert (Given/When/Then)
 - Rationale vorhanden – beantwortet "Warum?" (Entfällt der Grund, kann das Feature entfallen)
 - Scope eindeutig abgegrenzt (In/Out)
@@ -265,7 +265,7 @@ Von `Draft` zu `Active`, wenn:
 | Vages Statement ohne Given/When/Then | Nicht testbar → bleibt dauerhaft `Draft` |
 | Mehrere Requirements in einen H3-Node | Ein H3 = ein Requirement-Node – sonst verliert StrictDoc die Einzelreferenzierbarkeit |
 | Leerzeile zwischen Meta-Block und Statement vergessen | Parse-Fehler (Regel 2) |
-| UID ohne Code-Präfix (`SCAN-001` statt `SCAN-BE-001`) | Widerspricht der Konvention; Nummernraum ist pro Code getrennt |
+| UID ohne Code-Präfix (`PROJ-001` statt `PROJ-BE-001`) | Widerspricht der Konvention; Nummernraum ist pro Code getrennt |
 
 ---
 
@@ -275,9 +275,9 @@ Testfälle werden im MD-Modus als reguläre Requirement-Nodes mit dem reserviert
 Code `TC` beschrieben. Damit entsteht eine durchgehende Traceability-Kette:
 
 ```
-Requirement-Node  (SCAN-BE-001)
-    └── TC-Node   (SCAN-TC-001)   ←  Relations: SCAN-BE-001
-            └── Testfunktion       ←  @spec: SCAN-TC-001
+Requirement-Node  (PROJ-BE-001)
+    └── TC-Node   (PROJ-TC-001)   ←  Relations: PROJ-BE-001
+            └── Testfunktion       ←  @spec: PROJ-TC-001
 ```
 
 **Was StrictDoc automatisch zeigt**: Requirement → TC-Node (wegen `Relations:`).
@@ -287,35 +287,35 @@ Code-Reviews und Spec-Traceability).
 ### TC-Node Syntax
 
 ```markdown
-### Barcode-Scan gibt dekodierten Wert zurück
+### Funktion gibt erwartetes Ergebnis zurück
 
-**UID**: SCAN-TC-001 \
+**UID**: PROJ-TC-001 \
 **Status**: Draft \
-**Relations**: SCAN-BE-001
+**Relations**: PROJ-BE-001
 
-**Statement**: Given die Kamera ist aktiv und ein QR-Code im Bild,
-When der Scan ausgelöst wird, Then gibt die Funktion einen String
-im Format `{"data": "<wert>"}` innerhalb von 500 ms zurück.
+**Statement**: Given das System bereit ist und eine gültige Eingabe vorliegt,
+When die Verarbeitungsfunktion aufgerufen wird, Then gibt sie das erwartete
+Ergebnis im definierten Format innerhalb der Zeitvorgabe zurück.
 ```
 
 ### Testcode-Annotation
 
 ```python
-# @spec: SCAN-TC-001
-def test_barcode_scan_returns_decoded_value():
+# @spec: PROJ-TC-001
+def test_function_returns_expected_result():
     ...
 ```
 
 ```typescript
-// @spec: SCAN-TC-001
-test('Barcode scan returns decoded value', () => { ... });
+// @spec: PROJ-TC-001
+test('Function returns expected result', () => { ... });
 ```
 
 ### Ablageort
 
 TC-Nodes können wahlweise:
 - In der **Spec-Datei des Features** stehen – direkt nach dem Requirement-Node
-- In einer **eigenen Datei** `SCAN-TC-NNN-kurzer-titel.md` liegen – sinnvoll
+- In einer **eigenen Datei** `PROJ-TC-NNN-kurzer-titel.md` liegen – sinnvoll
   wenn TC-Nodes mehrere Dateien oder Features abdecken
 
 ### Einschränkung (MD-Modus)

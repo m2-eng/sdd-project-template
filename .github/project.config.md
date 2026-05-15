@@ -9,28 +9,28 @@ Setup, Ordnerstruktur und Workflow-Referenz: `.github/instructions/sdd.setup.md`
 
 | Feld | Wert |
 |------|------|
-| Projektkürzel | `SCAN` |
-| Projekttitel | ScanBrother |
-| Repository | m2-eng/ScanBrother |
+| Projektkürzel | `PROJ` |
+| Projekttitel | MyProject |
+| Repository | org/my-project |
 
 ---
 
 ## Spec-ID-Zähler
 
-Format: `SCAN-[CODE]-NNN` · Nummernraum pro Code getrennt · Datei: `spec/SCAN-[CODE]-NNN-<titel>.md`
+Format: `PROJ-[CODE]-NNN` · Nummernraum pro Code getrennt · Datei: `spec/PROJ-[CODE]-NNN-<titel>.md`
 Code-Definitionen: `specification.instructions.md`, Abschnitt 7.
 
 | Code | Nächste freie ID |
 |------|-----------------|
-| `SYS` | `SCAN-SYS-001` |
-| `UI` | `SCAN-UI-001` |
-| `BE` | `SCAN-BE-001` |
-| `API` | `SCAN-API-001` |
-| `DATA` | `SCAN-DATA-001` |
-| `INT` | `SCAN-INT-001` |
-| `SEC` | `SCAN-SEC-001` |
-| `SAF` | `SCAN-SAF-001` |
-| `TC` | `SCAN-TC-001` |
+| `SYS` | `PROJ-SYS-001` |
+| `UI` | `PROJ-UI-001` |
+| `BE` | `PROJ-BE-001` |
+| `API` | `PROJ-API-001` |
+| `DATA` | `PROJ-DATA-001` |
+| `INT` | `PROJ-INT-001` |
+| `SEC` | `PROJ-SEC-001` |
+| `SAF` | `PROJ-SAF-001` |
+| `TC` | `PROJ-TC-001` |
 
 ← Zähler bei Vergabe aktualisieren. Nicht verwendete Codes einfach weglassen.
 

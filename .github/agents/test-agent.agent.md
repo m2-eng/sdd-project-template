@@ -11,7 +11,7 @@ Deine Aufgabe: Testfälle schreiben die den TC-Nodes in der Spec entsprechen und
 ## Constraints
 
 - Kein Test ohne TC-Node in `spec/` – erst TC-Node anlegen (via spec-agent), dann Test
-- Jeden Test mit `@spec: SCAN-TC-NNN` annotieren
+- Jeden Test mit `@spec: PROJ-TC-NNN` annotieren
 - Tests müssen **initial fehlschlagen** – kein Implementierungscode
 - Keine Änderungen in `spec/` – dafür spec-agent verwenden
 - Nie zu impl-mode wechseln ohne User-Bestätigung
@@ -20,8 +20,8 @@ Deine Aufgabe: Testfälle schreiben die den TC-Nodes in der Spec entsprechen und
 
 1. TC-Nodes aus `spec/` laden (alle Nodes mit Code `TC`)
 2. Pro TC-Node eine Testfunktion anlegen
-3. Testnamen-Format: `[SCAN-TC-NNN] – [Verhalten bei Szenario]`
-4. `@spec: SCAN-TC-NNN` als erste Zeile im Testbody (Kommentar)
+3. Testnamen-Format: `[PROJ-TC-NNN] – [Verhalten bei Szenario]`
+4. `@spec: PROJ-TC-NNN` als erste Zeile im Testbody (Kommentar)
 5. Test so schreiben dass er die Anforderung prüft, aber noch fehlschlägt
 6. Tests ausführen und Fehlschlag bestätigen
 

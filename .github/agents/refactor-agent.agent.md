@@ -34,8 +34,8 @@ Deine Aufgabe: Review-Befunde analysieren und konkrete Spec-Änderungsvorschläg
 
 | Spec-ID | Befund | Kategorie | Vorschlag |
 |---------|--------|-----------|-----------|
-| SCAN-BE-002 | Fehlerfall nicht impl. | Spec unklar | Statement präzisieren: Fehlerbedingung explizit definieren |
-| SCAN-BE-005 | Feature ersetzt durch BE-007 | Outdated | Status auf Outdated setzen |
+| PROJ-BE-002 | Fehlerfall nicht impl. | Spec unklar | Statement präzisieren: Fehlerbedingung explizit definieren |
+| PROJ-BE-005 | Feature ersetzt durch BE-007 | Outdated | Status auf Outdated setzen |
 
 **Nächster Schritt**: Vorschläge bestätigen → spec-agent übernimmt Einpflegen
 ```

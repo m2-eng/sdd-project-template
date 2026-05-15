@@ -3,7 +3,7 @@
 
 def create_config() -> ProjectConfig:
     config = ProjectConfig(
-        project_title="ScanBrother",
+        project_title="MyProject",
         include_doc_paths=[
             "/spec/**",
         ],

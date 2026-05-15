@@ -24,10 +24,10 @@ pip install pytest pytest-cov allure-pytest
 ## Namenskonvention
 
 ```
-[SCAN-TC-NNN] – [Verhalten bei Szenario]
+[PROJ-TC-NNN] – [Verhalten bei Szenario]
 ```
 
-Beispiel: `[SCAN-TC-001] – Barcode-Scan gibt dekodierten Wert zurück`
+Beispiel: `[PROJ-TC-001] – Funktion gibt erwartetes Ergebnis zurück`
 
 ## Annotationsformat
 
@@ -37,11 +37,11 @@ Jeder Test erhält **drei Annotationen** – Kommentar (SSOT) + pytest-Marker (m
 import pytest
 import allure
 
-@pytest.mark.spec("SCAN-TC-001")
-@allure.link("SCAN-TC-001", name="SCAN-TC-001")
-@allure.title("[SCAN-TC-001] – Barcode-Scan gibt dekodierten Wert zurück")
-def test_SCAN_TC_001_barcode_returns_decoded_value():
-    # @spec: SCAN-TC-001
+@pytest.mark.spec("PROJ-TC-001")
+@allure.link("PROJ-TC-001", name="PROJ-TC-001")
+@allure.title("[PROJ-TC-001] – Funktion gibt erwartetes Ergebnis zurück")
+def test_PROJ_TC_001_function_returns_expected_result():
+    # @spec: PROJ-TC-001
     ...
 ```
 
@@ -50,9 +50,9 @@ Minimal (ohne Allure, wenn noch nicht installiert):
 ```python
 import pytest
 
-@pytest.mark.spec("SCAN-TC-001")
-def test_SCAN_TC_001_barcode_returns_decoded_value():
-    # @spec: SCAN-TC-001
+@pytest.mark.spec("PROJ-TC-001")
+def test_PROJ_TC_001_function_returns_expected_result():
+    # @spec: PROJ-TC-001
     ...
 ```
 
@@ -64,7 +64,7 @@ import pytest
 
 def pytest_configure(config):
     config.addinivalue_line(
-        "markers", "spec(uid): Links test to a Spec-Node UID (e.g. SCAN-TC-001)"
+        "markers", "spec(uid): Links test to a Spec-Node UID (e.g. PROJ-TC-001)"
     )
 ```
 
@@ -82,8 +82,8 @@ Wenn ein Test sofort grün ist ohne Implementierung: Testlogik prüfen.
 
 ## DON'T DO
 
-- Kein Test ohne `@spec: SCAN-TC-NNN`-Kommentar
-- Kein Test ohne `@pytest.mark.spec('SCAN-TC-NNN')`-Marker
+- Kein Test ohne `@spec: PROJ-TC-NNN`-Kommentar
+- Kein Test ohne `@pytest.mark.spec('PROJ-TC-NNN')`-Marker
 - Kein Test ohne zugehörigen TC-Node in `spec/`
 - Kein Produktionscode (kein `import src/...` außer dem zu testenden Modul)
 - Keine Tests für Verhalten das nicht in der Spec steht

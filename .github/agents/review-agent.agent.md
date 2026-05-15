@@ -40,9 +40,9 @@ Vollständige Prüflisten (State-of-the-Art, Lizenz, Security, Traceability): `r
 
 | Spec-ID | AC | Status | Abweichung |
 |---------|----|--------|------------|
-| SCAN-BE-001 | Barcode dekodieren | ✅ | – |
-| SCAN-BE-002 | Fehlerfall ungültig | ❌ | Nicht implementiert |
-| SCAN-TC-001 | Test Dekodierung | ✅ | – |
+| PROJ-BE-001 | [AC-Beschreibung] | ✅ | – |
+| PROJ-BE-002 | [AC-Beschreibung] | ❌ | Nicht implementiert |
+| PROJ-TC-001 | [Test-Beschreibung] | ✅ | – |
 
 **Traceability-Lücken**: [Funktionen ohne @spec-Annotation]
 

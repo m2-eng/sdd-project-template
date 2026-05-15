@@ -4,7 +4,7 @@
 Generiere niemals Code ohne eine gültige Spec-ID. Fehlt eine passende Spezifikation: stoppe und weise explizit darauf hin.
 
 ### Traceability
-Jede generierte Funktion trägt einen Verweis auf ihre Spec-ID als Kommentar: `@spec: SCAN-[CODE]-NNN`.
+Jede generierte Funktion trägt einen Verweis auf ihre Spec-ID als Kommentar: `@spec: PROJ-[CODE]-NNN`.
 
 ### Spec-first bei Unklarheit
 Ist eine Spec unvollständig oder widersprüchlich: zuerst klären, nicht improvisieren.

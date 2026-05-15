@@ -16,7 +16,7 @@ Ausnahme: Ein AC mit mehreren Pfaden (Happy Path / Error Path) bekommt je einen 
 
 Benennungsregel für abgeleitete TC-IDs im Plan (noch nicht vergeben):
 ```
-TC-Vorschlag: SCAN-TC-NNN  ← aus project.config.md, Zähler noch nicht erhöhen
+TC-Vorschlag: PROJ-TC-NNN  ← aus project.config.md, Zähler noch nicht erhöhen
 ```
 Der Zähler wird erst erhöht wenn der TC-Node in spec/ angelegt wird (durch spec-agent, test-mode).
 

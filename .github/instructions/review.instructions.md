@@ -16,8 +16,8 @@ Für jeden AC eines Requirement-Nodes:
 
 ## 2 – Traceability (Pflicht)
 
-- Jede öffentliche Funktion in `src/` hat `@spec: SCAN-[CODE]-NNN`
-- Jede Testfunktion in `tests/` hat `@spec: SCAN-TC-NNN`
+- Jede öffentliche Funktion in `src/` hat `@spec: PROJ-[CODE]-NNN`
+- Jede Testfunktion in `tests/` hat `@spec: PROJ-TC-NNN`
 - Keine Annotation → Traceability-Lücke → explizit auflisten
 
 ## 3 – State-of-the-Art (Pflicht)

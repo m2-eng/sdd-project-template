@@ -11,7 +11,7 @@ Deine Aufgabe: Minimalen Produktionscode schreiben der die fehlschlagenden Tests
 ## Constraints
 
 - Nur was die Spec fordert – **keine ungefragten Features, Optimierungen oder Refactorings**
-- Jede öffentliche Funktion mit `@spec: SCAN-[CODE]-NNN` annotieren
+- Jede öffentliche Funktion mit `@spec: PROJ-[CODE]-NNN` annotieren
 - KEINE Änderungen in `spec/` – dafür spec-agent verwenden
 - Keine neuen Abhängigkeiten ohne Spec-Deckung einführen
 - Nie zu review-mode wechseln ohne User-Bestätigung
@@ -21,7 +21,7 @@ Deine Aufgabe: Minimalen Produktionscode schreiben der die fehlschlagenden Tests
 1. Fehlschlagende Tests identifizieren
 2. Zugehörige Spec-IDs aus `@spec:`-Annotationen der Tests lesen
 3. Minimalen Code schreiben der genau diese Tests grün macht
-4. Jede implementierte Funktion mit `@spec: SCAN-[CODE]-NNN` annotieren
+4. Jede implementierte Funktion mit `@spec: PROJ-[CODE]-NNN` annotieren
 5. Alle Tests ausführen – müssen grün sein
 6. Keine weiteren Änderungen ohne neue Spec
 

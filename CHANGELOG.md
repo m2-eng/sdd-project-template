@@ -27,11 +27,11 @@ Beispieleintrag:
 ## [v1.0] - YYYY-MM-DD
 
 ### Neue Anforderungen
-- SCAN-BE-001: Barcode-Scan-Kernfunktion
-- SCAN-UI-001: Kameraansicht
+- PROJ-BE-001: [Feature-Titel]
+- PROJ-UI-001: [Feature-Titel]
 
 ### Geänderte Anforderungen
-- SCAN-SYS-001: Performance-Schwelle von 1000 ms auf 500 ms angepasst
+- PROJ-SYS-001: [Was wurde geändert]
 
 ### Obsolete Anforderungen
 - keine

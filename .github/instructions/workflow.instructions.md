@@ -67,7 +67,7 @@ oder User beschreibt ein Feature / eine Anforderung direkt im Chat.
 **Meine Aufgaben**:
 1. Für jeden Testfall (TC-NNN) aus der Spec einen Test schreiben
 2. Testnamen-Format: `[Spec-ID] – [Verhalten bei Szenario]`
-3. Jeden Test mit Spec-Referenz annotieren: `@spec: SCAN-TC-NNN`
+3. Jeden Test mit Spec-Referenz annotieren: `@spec: PROJ-TC-NNN`
 4. Alle Tests müssen zunächst fehlschlagen (Red-Phase)
 
 **Stopp-Bedingung**: Testfall in Spec fehlt oder unklar → Spec zuerst erweitern.
@@ -80,7 +80,7 @@ oder User beschreibt ein Feature / eine Anforderung direkt im Chat.
 
 **Meine Aufgaben**:
 1. Minimalen Code schreiben, der die Tests grün macht
-2. Jede Funktion mit `@spec: SCAN-[CODE]-NNN` dokumentieren
+2. Jede Funktion mit `@spec: PROJ-[CODE]-NNN` dokumentieren
 3. Keine Logik über die Spec hinaus generieren
 4. Nach Implementierung: alle Tests müssen grün sein
 
@@ -173,8 +173,8 @@ Werde ich gebeten, Code ohne Spec-ID zu schreiben, antworte ich immer:
 Spec-Referenzen im Code folgen immer diesem Format:
 
 ```
-@spec: SCAN-[CODE]-NNN        ← allgemeine Funktion
-@spec: SCAN-TC-NNN            ← Testfunktion (verlinkt TC-Node)
+@spec: PROJ-[CODE]-NNN        ← allgemeine Funktion
+@spec: PROJ-TC-NNN            ← Testfunktion (verlinkt TC-Node)
 ```
 
 UID-Konvention und Subsystem-Codes: `specification.instructions.md`, Abschnitt 7.

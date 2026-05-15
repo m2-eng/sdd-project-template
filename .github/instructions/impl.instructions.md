@@ -9,14 +9,14 @@ applyTo: "src/**"
 Jede öffentliche Funktion / Methode / Klasse trägt die Spec-Referenz als erste Kommentarzeile:
 
 ```python
-# @spec: SCAN-BE-001
-def decode_barcode(image: bytes) -> dict:
+# @spec: PROJ-BE-001
+def process_data(input: bytes) -> dict:
     ...
 ```
 
 ```typescript
-// @spec: SCAN-BE-001
-export function decodeBarcode(image: Uint8Array): DecodedResult {
+// @spec: PROJ-BE-001
+export function processData(input: Uint8Array): ProcessedResult {
     ...
 }
 ```
@@ -32,7 +32,7 @@ Nur was die Spec fordert. Keine:
 
 ## Abhängigkeiten
 
-Keine neuen externen Packages ohne Spec-Deckung (`SCAN-SYS-NNN` oder `SCAN-BE-NNN`).
+Keine neuen externen Packages ohne Spec-Deckung (`PROJ-SYS-NNN` oder `PROJ-BE-NNN`).
 Neue Abhängigkeit einzuführen = Architekturentscheidung = plan-mode nötig.
 
 Alle Packages werden ausschließlich in `.venv` installiert – **nie global**:
