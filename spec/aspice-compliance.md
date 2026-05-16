@@ -131,7 +131,7 @@ Der SDD-Workflow erfüllt SUP.2 durch:
 ### Joint Reviews werden systematisch durchgeführt und Ergebnisse persistiert
 
 **UID**: PROJ-SYS-011 \
-**Status**: Active
+**Status**: Draft
 
 **Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.4, BP 1–6]
 
