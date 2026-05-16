@@ -83,3 +83,39 @@ def test_PROJ_TC_005_release_yml_handles_pytest_exit_code_5():
         "release.yml muss Exit Code 5 von pytest explizit behandeln "
         "(erwartet: '|| [ $? -eq 5 ]' im Run-tests-Step)"
     )
+
+
+@pytest.mark.spec("PROJ-TC-006")
+@allure.link("PROJ-TC-006", name="PROJ-TC-006")
+@allure.title("[PROJ-TC-006] – release.yml enthält ZIP-Schritt für Review-Berichte")
+def test_PROJ_TC_006_release_yml_has_zip_step_for_review_reports():
+    # @spec: PROJ-TC-006
+    content = RELEASE_YML.read_text(encoding="utf-8")
+    assert re.search(r"zip\b.*review-reports-", content) is not None, (
+        "release.yml muss einen ZIP-Schritt enthalten der docs/review/ Dateien "
+        "in ein Archiv mit dem Muster 'review-reports-' packt"
+    )
+
+
+@pytest.mark.spec("PROJ-TC-007")
+@allure.link("PROJ-TC-007", name="PROJ-TC-007")
+@allure.title("[PROJ-TC-007] – release.yml bricht nicht ab wenn docs/review leer ist")
+def test_PROJ_TC_007_release_yml_has_guard_for_empty_docs_review():
+    # @spec: PROJ-TC-007
+    content = RELEASE_YML.read_text(encoding="utf-8")
+    assert re.search(r"find\s+docs/review", content) is not None, (
+        "release.yml muss einen Guard für leeres docs/review/ enthalten "
+        "(erwartet: 'find docs/review' zur Prüfung ob Verzeichnis Dateien enthält)"
+    )
+
+
+@pytest.mark.spec("PROJ-TC-008")
+@allure.link("PROJ-TC-008", name="PROJ-TC-008")
+@allure.title("[PROJ-TC-008] – ZIP-Dateiname enthält versionierten review-reports-Präfix")
+def test_PROJ_TC_008_zip_filename_contains_versioned_review_reports_prefix():
+    # @spec: PROJ-TC-008
+    content = RELEASE_YML.read_text(encoding="utf-8")
+    assert re.search(r"review-reports-\$\{?.*[Vv][Ee][Rr][Ss]|review-reports-\$\{?.*[Tt][Aa][Gg]|review-reports-\$\{\{.*tag", content) is not None, (
+        "release.yml muss den ZIP-Dateinamen mit Tag-Variable versehen "
+        "(erwartet: 'review-reports-${VERSION}' oder ähnliches mit Tag-Referenz)"
+    )

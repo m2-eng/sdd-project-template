@@ -139,6 +139,10 @@ Prozesshistorie sind über Git-History + Spec nachvollziehbar.
 Artifakte (Test-Report, StrictDoc-Export) werden bei Auslieferung automatisch
 von der CD-Pipeline am GitHub Release angehängt.
 
+**Auslösung**: Issue aus `.github/ISSUE_TEMPLATE/release-preparation.md` anlegen
+(GitHub: #6). Alle Checklisten-Punkte im Issue abarbeiten, per PR auf `main` mergen,
+dann Tag setzen → CD-Pipeline übernimmt automatisch.
+
 **Baseline-Checkliste (vor Freigabe vollständig prüfen):**
 
 | Punkt | Bedingung |
@@ -147,6 +151,7 @@ von der CD-Pipeline am GitHub Release angehängt.
 | Tests | Alle Tests grün |
 | Review | Review-Dokument in `docs/review/` vorhanden, alle Abweichungen geschlossen |
 | Traceability | Alle Funktionen in `src/` und Tests in `tests/` tragen `@spec:`-Annotation |
+| Review-Berichte | Alle `docs/review/*.md` committed (→ CD zipt sie als `review-reports-vX.Y.zip`) |
 
 **Baseline-Naming:**
 - Format: `vMAJOR.MINOR` (z.B. `v1.0`, `v1.1`) – Pre-Release: `vMAJOR.MINOR-alpha.N` / `vMAJOR.MINOR-beta.N`

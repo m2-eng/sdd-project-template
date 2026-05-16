@@ -55,6 +55,14 @@ Kritische OWASP-Top-10-Muster prüfen:
 Jeder Befund muss mit Datei + Zeilennummer oder Spec-ID belegt sein.
 Keine ungefundenen Wertungen.
 
+## Abschluss-Schritt
+
+Nach Fertigstellung des Review-Dokuments: Commit-Schritt und Übergabe an
+`refactor-mode` oder `baseline-mode` gemäß `workflow.instructions.md`, Phase 5.
+
+Hinweis (PROJ-SYS-010): `docs/review/*.md` müssen committed sein, damit die
+CD-Pipeline beim Baseline-Release automatisch `review-reports-vX.Y.zip` erzeugt.
+
 ## DON'T DO
 
 - Kein "sieht gut aus" ohne vollständigen Abgleich
