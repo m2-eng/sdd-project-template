@@ -83,6 +83,12 @@ Der SDD-Workflow erfüllt SWE.4 durch:
 - `test-mode` (TDD Red-Phase): Tests werden vor Implementierung geschrieben
 - CD-Pipeline (`release.yml`) veröffentlicht Test-Reports als GitHub-Release-Artefakte
 
+Template-Robustheit im Initialzustand (GitHub: #3):
+- `release.yml` muss auch dann erfolgreich durchlaufen, wenn `tests/` ausschließlich README-Dateien enthält (keine Testfunktionen vorhanden)
+- Exit Code 5 von pytest (keine Tests gesammelt) darf den Release-Prozess nicht abbrechen
+- Fehlende Artefakte im Initialzustand (`coverage.xml`, leeres `allure-results/`) dürfen den Release-Schritt nicht blockieren
+- Externe Tools in der Pipeline werden mit fixierter Version installiert (Supply-Chain-Schutz gemäß OWASP A08)
+
 ## SUP.1 – Quality Assurance
 
 ### Qualitätssicherung wird systematisch durchgeführt und dokumentiert
@@ -180,3 +186,75 @@ Der SDD-Workflow bereitet SWE.5/6 durch folgende Infrastruktur vor:
 
 Vollständige Aktivierung erfordert: pytest.ini-Erweiterung + separate Allure-Reporte + neue TC-Nodes.
 - Pytest-Marker-Texte enthalten ASPICE-Prozessreferenzen als Konvention; für Projekte mit anderem Prozessrahmen (ISO 26262, DO-178C, ISO 9001) sind Marker-Texte in `pytest.ini` und `conftest.py` projektspezifisch ohne Norm-Verweis zu formulieren
+
+## Test Cases – Release Pipeline Robustheit
+
+### pytest gibt Exit Code 5 zurück wenn keine Tests vorhanden
+
+**UID**: PROJ-TC-001 \
+**Status**: Active \
+**Relations**: PROJ-SYS-003
+
+**Statement**: Given ein leeres Testverzeichnis ohne Testfunktionen existiert,
+When pytest mit `--collect-only` auf dieses Verzeichnis ausgeführt wird,
+Then gibt pytest Exit Code 5 zurück (keine Tests gesammelt).
+
+**Rationale**: Dokumentiert das bekannte pytest-Verhalten bei leerem `tests/`-Verzeichnis
+(Initialzustand des Templates). Grundlage für TC-005 (Pipeline-seitige Behandlung).
+
+### release.yml enthält Guard für leeres allure-results-Verzeichnis
+
+**UID**: PROJ-TC-002 \
+**Status**: Active \
+**Relations**: PROJ-SYS-003
+
+**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+When der Inhalt auf den Step „Generate Allure report" geprüft wird,
+Then enthält der Step einen Guard der prüft ob `allure-results/` nicht leer ist
+(erwartet: `ls -A`-Aufruf als Existenzprüfung).
+
+**Rationale**: Verhindert, dass `allure generate` auf ein leeres Verzeichnis angewendet wird
+und den Release-Prozess abbricht (GitHub Issue #3, AC-3).
+
+### release.yml übergibt coverage.xml konditional an gh release create
+
+**UID**: PROJ-TC-003 \
+**Status**: Active \
+**Relations**: PROJ-SYS-003
+
+**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+When der Inhalt auf den Step „Create GitHub Release" geprüft wird,
+Then enthält der Step eine `[ -f ... coverage.xml ]`-Existenzprüfung vor der Übergabe
+an `gh release create`.
+
+**Rationale**: Im Initialzustand erzeugt pytest keine `coverage.xml`. Ein unbedingter
+Upload bricht den Release-Step mit Fehler ab (GitHub Issue #3, AC-3).
+
+### release.yml installiert allure-commandline mit expliziter Versionsnummer
+
+**UID**: PROJ-TC-004 \
+**Status**: Active \
+**Relations**: PROJ-SYS-003
+
+**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+When der Inhalt auf den Step „Install Allure CLI" geprüft wird,
+Then enthält der `npm install`-Befehl einen Versions-Pin der Form `allure-commandline@X.Y.Z`.
+
+**Rationale**: Unpinned `npm install -g allure-commandline` kann durch Breaking Changes
+in neuen Versionen die Pipeline ohne Vorwarnung brechen (Supply-Chain-Schutz, OWASP A08,
+GitHub Issue #3, AC-4).
+
+### release.yml behandelt Exit Code 5 von pytest explizit
+
+**UID**: PROJ-TC-005 \
+**Status**: Active \
+**Relations**: PROJ-SYS-003
+
+**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+When der Inhalt auf den Step „Run tests" geprüft wird,
+Then enthält der Step den Ausdruck `$? -eq 5` zur expliziten Behandlung von
+pytest Exit Code 5 (keine Tests gesammelt).
+
+**Rationale**: Exit Code 5 bedeutet „keine Tests gesammelt" und ist im Initialzustand
+des Templates der Normalfall. Ohne explizite Behandlung bricht der `run: python -m pytest`
+Step die Pipeline ab (GitHub Issue #3, AC-2).
