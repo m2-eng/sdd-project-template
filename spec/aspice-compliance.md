@@ -126,6 +126,58 @@ Der SDD-Workflow erfüllt SUP.2 durch:
 - `spec-mode` / `plan-mode` / `impl-mode` als Phasen-Gate: kein Code ohne Spec-ID
 - `Spec-Gate` in `copilot-instructions.md`: Copilot verweigert Code ohne gültige Spec-ID
 
+## SUP.4 – Joint Review
+
+### Joint Reviews werden systematisch durchgeführt und Ergebnisse persistiert
+
+**UID**: PROJ-SYS-011 \
+**Status**: Draft
+
+**Statement**: TODO – Normtext hier einfügen: [ASPICE PAM, SUP.4, BP 1–6]
+
+**Rationale**:
+
+Der SDD-Workflow adressiert SUP.4 durch:
+- `review-mode` (Phase 5): strukturierter Review gegen Spec mit dokumentierten Abweichungen
+- Review-Dokumente in `docs/review/YYYY-MM-DD_[Spec-ID]_review.md` als persistente Aufzeichnung
+- `refactor-mode` (Phase 6): Abweichungen führen zu Spec-Änderungsvorschlägen mit User-Bestätigung
+- Konkrete Ablage- und Commit-Strategie: PROJ-SYS-010
+
+### Review-Dokumente werden persistent committed und als Baseline-Artefakt veröffentlicht
+
+**UID**: PROJ-SYS-010 \
+**Status**: Active \
+**Relations**: PROJ-SYS-011
+
+**Statement**:
+
+Given ein Review-Bericht im `review-mode` unter
+`docs/review/YYYY-MM-DD_[Spec-ID]_review.md` erstellt wurde,
+When eine neue Baseline (`baseline/vX.Y`) veröffentlicht wird,
+Then sind alle bis dahin erstellten Review-Dokumente aus `docs/review/` im
+Repository committed und als ZIP-Archiv `review-reports-vX.Y.zip` dem
+zugehörigen GitHub Release angehängt, sodass Review-Ergebnisse dauerhaft
+rückverfolgbar und dem Baseline-Artefakt-Set explizit zugeordnet sind.
+
+**Rationale**:
+
+ASPICE erfordert persistente, rückverfolgbare Review-Aufzeichnungen:
+- SUP.1 BP 4/5: QA-Aufzeichnungen müssen zugänglich und rückverfolgbar sein
+- SUP.4 BP 1/4: Joint-Review-Ergebnisse müssen persistiert werden, Abweichungen nachvollziehbar
+- SUP.8: Qualitätsnachweise gehören zum Baseline-Artefakt-Set (Querref. PROJ-SYS-006)
+
+Entscheidung für Option A + C (GitHub: #5):
+- Option A (committed): Einfachste ASPICE-konforme Grundlage; Review-Dateien sind
+  direkt in der Git-History nachvollziehbar; keine Zusatzkomplexität
+- Option C (Release-Artefakt): `release.yml` liest `docs/review/*.md`, zipt sie
+  im CI-Runner und hängt `review-reports-vX.Y.zip` als Asset an den GitHub Release
+  an – kein zusätzlicher Commit erforderlich
+- Optionen B, D, E, F, G verworfen: B verletzt SUP.1/SUP.4; D/E/F/G erzeugen
+  Traceability-Lücken oder unverhältnismäßigen Mehraufwand
+
+Manuelle Pre-Release-Schritte (CHANGELOG, Versionsnummer, Spec-Status) werden
+durch ein dediziertes Release-Preparation-Issue-Template abgedeckt (GitHub: #6).
+
 ## SUP.8 – Configuration Management
 
 ### Baselines werden systematisch erstellt, freigegeben und als Artefakte veröffentlicht
@@ -278,3 +330,56 @@ pytest Exit Code 5 (keine Tests gesammelt).
 Exit Code 5 bedeutet „keine Tests gesammelt" und ist im Initialzustand
 des Templates der Normalfall. Ohne explizite Behandlung bricht der `run: python -m pytest`
 Step die Pipeline ab (GitHub Issue #3, AC-2).
+
+### release.yml enthält ZIP-Schritt für Review-Berichte
+
+**UID**: PROJ-TC-006 \
+**Status**: Active \
+**Relations**: PROJ-SYS-010
+
+**Statement**:
+
+Given die Datei `.github/workflows/release.yml` existiert und PROJ-SYS-010 implementiert ist,
+When der Dateiinhalt gelesen wird,
+Then enthält er einen `zip`-Befehl der Dateien aus `docs/review/` in ein Archiv
+mit dem Namensmuster `review-reports-` packt.
+
+**Rationale**:
+
+PROJ-SYS-010 fordert dass Review-Berichte als ZIP-Anhang beim GitHub Release bereitgestellt werden.
+Der ZIP-Schritt in `release.yml` ist die technische Umsetzung dieser Anforderung.
+
+### release.yml bricht nicht ab wenn docs/review leer ist
+
+**UID**: PROJ-TC-007 \
+**Status**: Active \
+**Relations**: PROJ-SYS-010
+
+**Statement**:
+
+Given die Datei `.github/workflows/release.yml` existiert,
+When der Dateiinhalt gelesen wird,
+Then enthält er einen Guard der sicherstellt dass ein leeres `docs/review/`-Verzeichnis
+keinen Fehler verursacht (find-basierte Prüfung mit `find docs/review`).
+
+**Rationale**:
+
+Ohne Guard schlägt `zip -j review-reports-*.zip docs/review/*.md` fehl wenn
+`docs/review/` leer ist – der Glob expandiert nicht und bricht den Step ab.
+
+### ZIP-Dateiname enthält versionierten review-reports-Präfix
+
+**UID**: PROJ-TC-008 \
+**Status**: Active \
+**Relations**: PROJ-SYS-010
+
+**Statement**:
+
+Given die Datei `.github/workflows/release.yml` existiert,
+When der Dateiinhalt gelesen wird,
+Then referenziert der ZIP-Dateiname die Tag-Variable und beginnt mit `review-reports-`.
+
+**Rationale**:
+
+Der versionierte Dateiname ermöglicht die eindeutige Zuordnung des ZIP-Archivs
+zur jeweiligen Release-Version (z.B. `review-reports-v1.0.zip`).
