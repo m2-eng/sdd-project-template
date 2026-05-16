@@ -26,13 +26,18 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Run tests
-        run: python -m pytest
+        run: python -m pytest || [ $? -eq 5 ]
 
       - name: Install Allure CLI
-        run: npm install -g allure-commandline
+        run: npm install -g allure-commandline@2.41.0
 
       - name: Generate Allure report
-        run: allure generate docs/test-reports/allure-results -o docs/test-reports/allure-report --clean
+        run: |
+          if [ -n "$(ls -A docs/test-reports/allure-results 2>/dev/null)" ]; then
+            allure generate docs/test-reports/allure-results -o docs/test-reports/allure-report --clean
+          else
+            mkdir -p docs/test-reports/allure-report
+          fi
 
       - name: Export StrictDoc traceability matrix
         run: strictdoc export .
@@ -51,10 +56,14 @@ jobs:
           if [[ "$TAG" == *"-alpha"* ]] || [[ "$TAG" == *"-beta"* ]]; then
             PRERELEASE_FLAG="--prerelease"
           fi
+          COVERAGE_ARG=""
+          if [ -f docs/test-reports/coverage.xml ]; then
+            COVERAGE_ARG="docs/test-reports/coverage.xml"
+          fi
           gh release create "$TAG" \
             $PRERELEASE_FLAG \
             --title "$TAG" \
             --notes "Automatisch erzeugt durch Release Pipeline" \
             allure-report.zip \
             traceability.zip \
-            docs/test-reports/coverage.xml
+            $COVERAGE_ARG

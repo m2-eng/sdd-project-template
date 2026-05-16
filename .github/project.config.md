@@ -30,7 +30,7 @@ Code-Definitionen: `specification.instructions.md`, Abschnitt 7.
 | `INT` | `PROJ-INT-001` |
 | `SEC` | `PROJ-SEC-001` |
 | `SAF` | `PROJ-SAF-001` |
-| `TC` | `PROJ-TC-001` |
+| `TC` | `PROJ-TC-006` |
 | `TC-U` | `PROJ-TC-U-001` |
 | `TC-I` | `PROJ-TC-I-001` |
 | `TC-Q` | `PROJ-TC-Q-001` |
