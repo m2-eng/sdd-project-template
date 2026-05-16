@@ -195,11 +195,15 @@ Vollständige Aktivierung erfordert: pytest.ini-Erweiterung + separate Allure-Re
 **Status**: Active \
 **Relations**: PROJ-SYS-003
 
-**Statement**: Given ein leeres Testverzeichnis ohne Testfunktionen existiert,
+**Statement**:
+
+Given ein leeres Testverzeichnis ohne Testfunktionen existiert,
 When pytest mit `--collect-only` auf dieses Verzeichnis ausgeführt wird,
 Then gibt pytest Exit Code 5 zurück (keine Tests gesammelt).
 
-**Rationale**: Dokumentiert das bekannte pytest-Verhalten bei leerem `tests/`-Verzeichnis
+**Rationale**:
+
+Dokumentiert das bekannte pytest-Verhalten bei leerem `tests/`-Verzeichnis
 (Initialzustand des Templates). Grundlage für TC-005 (Pipeline-seitige Behandlung).
 
 ### release.yml enthält Guard für leeres allure-results-Verzeichnis
@@ -208,12 +212,16 @@ Then gibt pytest Exit Code 5 zurück (keine Tests gesammelt).
 **Status**: Active \
 **Relations**: PROJ-SYS-003
 
-**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+**Statement**:
+
+Given die Datei `.github/workflows/release.yml` existiert,
 When der Inhalt auf den Step „Generate Allure report" geprüft wird,
 Then enthält der Step einen Guard der prüft ob `allure-results/` nicht leer ist
 (erwartet: `ls -A`-Aufruf als Existenzprüfung).
 
-**Rationale**: Verhindert, dass `allure generate` auf ein leeres Verzeichnis angewendet wird
+**Rationale**:
+
+Verhindert, dass `allure generate` auf ein leeres Verzeichnis angewendet wird
 und den Release-Prozess abbricht (GitHub Issue #3, AC-3).
 
 ### release.yml übergibt coverage.xml konditional an gh release create
@@ -222,12 +230,16 @@ und den Release-Prozess abbricht (GitHub Issue #3, AC-3).
 **Status**: Active \
 **Relations**: PROJ-SYS-003
 
-**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+**Statement**:
+
+Given die Datei `.github/workflows/release.yml` existiert,
 When der Inhalt auf den Step „Create GitHub Release" geprüft wird,
 Then enthält der Step eine `[ -f ... coverage.xml ]`-Existenzprüfung vor der Übergabe
 an `gh release create`.
 
-**Rationale**: Im Initialzustand erzeugt pytest keine `coverage.xml`. Ein unbedingter
+**Rationale**:
+
+Im Initialzustand erzeugt pytest keine `coverage.xml`. Ein unbedingter
 Upload bricht den Release-Step mit Fehler ab (GitHub Issue #3, AC-3).
 
 ### release.yml installiert allure-commandline mit expliziter Versionsnummer
@@ -236,11 +248,15 @@ Upload bricht den Release-Step mit Fehler ab (GitHub Issue #3, AC-3).
 **Status**: Active \
 **Relations**: PROJ-SYS-003
 
-**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+**Statement**:
+
+Given die Datei `.github/workflows/release.yml` existiert,
 When der Inhalt auf den Step „Install Allure CLI" geprüft wird,
 Then enthält der `npm install`-Befehl einen Versions-Pin der Form `allure-commandline@X.Y.Z`.
 
-**Rationale**: Unpinned `npm install -g allure-commandline` kann durch Breaking Changes
+**Rationale**:
+
+Unpinned `npm install -g allure-commandline` kann durch Breaking Changes
 in neuen Versionen die Pipeline ohne Vorwarnung brechen (Supply-Chain-Schutz, OWASP A08,
 GitHub Issue #3, AC-4).
 
@@ -250,11 +266,15 @@ GitHub Issue #3, AC-4).
 **Status**: Active \
 **Relations**: PROJ-SYS-003
 
-**Statement**: Given die Datei `.github/workflows/release.yml` existiert,
+**Statement**:
+
+Given die Datei `.github/workflows/release.yml` existiert,
 When der Inhalt auf den Step „Run tests" geprüft wird,
 Then enthält der Step den Ausdruck `$? -eq 5` zur expliziten Behandlung von
 pytest Exit Code 5 (keine Tests gesammelt).
 
-**Rationale**: Exit Code 5 bedeutet „keine Tests gesammelt" und ist im Initialzustand
+**Rationale**:
+
+Exit Code 5 bedeutet „keine Tests gesammelt" und ist im Initialzustand
 des Templates der Normalfall. Ohne explizite Behandlung bricht der `run: python -m pytest`
 Step die Pipeline ab (GitHub Issue #3, AC-2).
